@@ -27,6 +27,7 @@ public class CREDExpandableView: NSObject {
     public func setupViews(views: CREDView) throws {
         if numberOfViews >= CREDConfig.kMinimumViews && numberOfViews <= CREDConfig.kMaximumViews {
             CREDStackView.shared.views = views
+            CREDStackView.shared.numberOfViews = numberOfViews
         } else {
             throw CREDError.wrongSetup(ErrorConstants.kWrongNumberOfViewsPassed)
         }

@@ -11,6 +11,7 @@ import UIKit
 
 class CREDStackView {
     static let shared = CREDStackView()
+    var numberOfViews: Int?
     var views: CREDView?
     var stacks = [UIStackView]()
     var expanded = [Bool]()
@@ -18,6 +19,7 @@ class CREDStackView {
     func displayExpandableView(in view: UIView) {
         let distri: UIStackView.Distribution = .fill
         let align: UIStackView.Alignment = .fill
+        var expandedViewSetup = false
         
         let mainStackView = UIStackView()
         mainStackView.axis = NSLayoutConstraint.Axis.vertical
@@ -25,15 +27,11 @@ class CREDStackView {
         mainStackView.alignment = align
         view.addSubview(mainStackView)
         
-        let stackView = CREDStackView.shared.getSubStackView(distribution: distri, alignment: align, index: 0, expanded: true)
-        let stackView2 = CREDStackView.shared.getSubStackView(distribution: distri, alignment: align, index: 1, expanded: false)
-        let stackView3 = CREDStackView.shared.getSubStackView(distribution: distri, alignment: align, index: 2, expanded: false)
-        let stackView4 = CREDStackView.shared.getSubStackView(distribution: distri, alignment: align, index: 3, expanded: false)
-        
-        mainStackView.addArrangedSubview(stackView)
-        mainStackView.addArrangedSubview(stackView2)
-        mainStackView.addArrangedSubview(stackView3)
-        mainStackView.addArrangedSubview(stackView4)
+        for i in 0..<CREDStackView.shared.numberOfViews! {
+            let stackView = CREDStackView.shared.getSubStackView(distribution: distri, alignment: align, index: i, expanded: !expandedViewSetup)
+            mainStackView.addArrangedSubview(stackView)
+            expandedViewSetup = true
+        }
         
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
         mainStackView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -41,8 +39,11 @@ class CREDStackView {
         mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
-        stackView3.isHidden = true
-        stackView4.isHidden = true
+        if numberOfViews ?? 0 > 2 {
+            for i in 2..<numberOfViews! {
+                CREDStackView.shared.stacks[i].isHidden = true
+            }
+        }
     }
     
     func getSubStackView(distribution: UIStackView.Distribution, alignment: UIStackView.Alignment, index: Int, expanded: Bool) -> UIStackView {
@@ -51,7 +52,7 @@ class CREDStackView {
         stackView.distribution = distribution
         stackView.alignment = alignment
 
-        let views = CREDStackView.shared.getStandardViews(superView: stackView, buttonTag: index)
+        let views = CREDStackView.shared.getStandardViews(superView: stackView, index: index)
         stackView.addArrangedSubview(views.0)
         stackView.addArrangedSubview(views.1)
         stackView.addArrangedSubview(views.2)
@@ -73,26 +74,27 @@ class CREDStackView {
         return stackView
     }
     
-    func getStandardViews(superView: UIView, buttonTag: Int) -> (UIButton, UIView, UILabel) {
+    func getStandardViews(superView: UIView, index: Int) -> (UIButton, UIView, UILabel) {
         let button = UIButton()
-        if buttonTag == 0 {
+        if index == 0 {
             button.backgroundColor = .cyan
-        } else if buttonTag == 1{
+        } else if index == 1{
             button.backgroundColor = .green
         } else {
             button.backgroundColor = UIColor.red.withAlphaComponent(0.7)
         }
-        button.tag = buttonTag
+        button.tag = index
         button.setTitleColor(UIColor.black, for: .normal)
-        button.setTitle("Click me \(buttonTag)", for: .normal)
+        button.setTitle(CREDStackView.shared.views!.buttons[index].title, for: .normal)
+        button.backgroundColor = CREDStackView.shared.views!.buttons[index].backgroundColor
         button.addTarget(self, action:#selector(self.buttonClicked(_:)), for: .touchUpInside)
         
         let smallBox = UIView()
-        smallBox.backgroundColor = UIColor.blue
+        smallBox.backgroundColor = UIColor.clear
 
         let textLabel = UILabel()
-        textLabel.backgroundColor = UIColor.yellow
-        textLabel.text  = "Hi World \(buttonTag)"
+        textLabel.backgroundColor = CREDStackView.shared.views!.labels[index].backgroundColor
+        textLabel.text  = CREDStackView.shared.views!.labels[index].text
         textLabel.textAlignment = .center
         
         return (button, smallBox, textLabel)
