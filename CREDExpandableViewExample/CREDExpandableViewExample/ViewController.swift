@@ -17,7 +17,7 @@ class ViewController: UIViewController {
                                  CREDButton(title: "Button 2", backgroundColor: UIColor.red),
                                  CREDButton(title: "Button 3", backgroundColor: UIColor.blue)]
     let labels: [CREDLabel] = [CREDLabel(text: "This is my first view", backgroundColor: UIColor.lightGray),
-                               CREDLabel(text: "This is my second view", backgroundColor: UIColor.purple),
+                               CREDLabel(text: "This is my second view", backgroundColor: UIColor.green),
                                CREDLabel(text: "This is my third view", backgroundColor: UIColor.yellow)]
     
     override func viewDidLoad() {
