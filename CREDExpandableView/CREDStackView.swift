@@ -15,6 +15,7 @@ class CREDStackView {
     var views: CREDView?
     var stacks = [UIStackView]()
     var expanded = [Bool]()
+    var userDataViews = [UIView]()
     
     func displayExpandableView(in view: UIView) {
         let distri: UIStackView.Distribution = .fill
@@ -57,6 +58,8 @@ class CREDStackView {
         stackView.addArrangedSubview(views.1)
         stackView.addArrangedSubview(views.2)
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        CREDStackView.shared.userDataViews.append(views.1)
         
         if expanded {
             CREDStackView.shared.expanded.append(true)

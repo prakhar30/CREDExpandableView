@@ -29,6 +29,10 @@ class ViewController: UIViewController {
             
             try view.setupViews(views: credViews)
             view.display(inView: contentView)
+            
+            view.getView(atIndex: 0)?.backgroundColor = UIColor.orange
+            view.getView(atIndex: 1)?.backgroundColor = UIColor.gray
+            view.getView(atIndex: 2)?.backgroundColor = UIColor.systemPink
         } catch {
             print(error)
         }

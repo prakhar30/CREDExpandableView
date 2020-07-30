@@ -37,4 +37,13 @@ public class CREDExpandableView: NSObject {
     public func display(inView: UIView) {
         CREDStackView.shared.displayExpandableView(in: inView)
     }
+    
+    /// Returns the subview which you can use to display your custom content in the view expanded at the given index.
+    public func getView(atIndex: Int) -> UIView? {
+        if atIndex < 0 || atIndex > numberOfViews - 1 {
+            return nil
+        } else {
+            return CREDStackView.shared.userDataViews[atIndex]
+        }
+    }
 }
