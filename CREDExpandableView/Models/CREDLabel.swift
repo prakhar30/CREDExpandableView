@@ -12,4 +12,10 @@ import UIKit
 public struct CREDLabel {
     var text: String
     var backgroundColor: UIColor = UIColor.clear
+    
+    public init(text: String, backgroundColor: UIColor = UIColor.clear) {
+        self.text = text
+        self.backgroundColor = backgroundColor
+    }
+
 }

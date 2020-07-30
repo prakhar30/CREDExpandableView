@@ -11,4 +11,9 @@ import Foundation
 public struct CREDView {
     var buttons: [CREDButton]
     var labels: [CREDLabel]
+    
+    public init(buttons: [CREDButton], labels: [CREDLabel]) {
+        self.buttons = buttons
+        self.labels = labels
+    }
 }
