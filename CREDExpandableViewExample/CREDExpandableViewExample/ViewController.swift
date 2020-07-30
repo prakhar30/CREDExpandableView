@@ -7,14 +7,19 @@
 //
 
 import UIKit
+import CREDExpandableView
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var contentView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        do {
+            let view = try CREDExpandableView(numberOfViews: 3)
+        } catch {
+            print(error)
+        }
     }
-
-
 }
-

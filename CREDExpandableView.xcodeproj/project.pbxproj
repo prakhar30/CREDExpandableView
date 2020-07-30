@@ -10,6 +10,9 @@
 		C04AF51E24D34ADC0054686E /* CREDExpandableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C04AF51424D34ADC0054686E /* CREDExpandableView.framework */; };
 		C04AF52324D34ADC0054686E /* CREDExpandableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04AF52224D34ADC0054686E /* CREDExpandableViewTests.swift */; };
 		C04AF52524D34ADC0054686E /* CREDExpandableView.h in Headers */ = {isa = PBXBuildFile; fileRef = C04AF51724D34ADC0054686E /* CREDExpandableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C0E9687124D34EA200D26CCB /* CREDExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E9687024D34EA200D26CCB /* CREDExpandableView.swift */; };
+		C0E9687624D34F9A00D26CCB /* CREDErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E9687524D34F9A00D26CCB /* CREDErrors.swift */; };
+		C0E9687824D350A000D26CCB /* CREDConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E9687724D350A000D26CCB /* CREDConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		C04AF52224D34ADC0054686E /* CREDExpandableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CREDExpandableViewTests.swift; sourceTree = "<group>"; };
 		C04AF52424D34ADC0054686E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C04AF55C24D34B1B0054686E /* CREDExpandableViewExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CREDExpandableViewExample.xcodeproj; path = CREDExpandableViewExample/CREDExpandableViewExample.xcodeproj; sourceTree = "<group>"; };
+		C0E9687024D34EA200D26CCB /* CREDExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CREDExpandableView.swift; sourceTree = "<group>"; };
+		C0E9687524D34F9A00D26CCB /* CREDErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CREDErrors.swift; sourceTree = "<group>"; };
+		C0E9687724D350A000D26CCB /* CREDConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CREDConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +93,10 @@
 		C04AF51624D34ADC0054686E /* CREDExpandableView */ = {
 			isa = PBXGroup;
 			children = (
+				C0E9687424D34F8C00D26CCB /* Constants */,
 				C04AF51724D34ADC0054686E /* CREDExpandableView.h */,
 				C04AF51824D34ADC0054686E /* Info.plist */,
+				C0E9687024D34EA200D26CCB /* CREDExpandableView.swift */,
 			);
 			path = CREDExpandableView;
 			sourceTree = "<group>";
@@ -109,6 +117,15 @@
 				C04AF56424D34B1C0054686E /* CREDExpandableViewExampleTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C0E9687424D34F8C00D26CCB /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				C0E9687524D34F9A00D26CCB /* CREDErrors.swift */,
+				C0E9687724D350A000D26CCB /* CREDConfig.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +190,7 @@
 				TargetAttributes = {
 					C04AF51324D34ADC0054686E = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 					};
 					C04AF51C24D34ADC0054686E = {
 						CreatedOnToolsVersion = 11.6;
@@ -243,6 +261,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0E9687824D350A000D26CCB /* CREDConfig.swift in Sources */,
+				C0E9687624D34F9A00D26CCB /* CREDErrors.swift in Sources */,
+				C0E9687124D34EA200D26CCB /* CREDExpandableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +409,7 @@
 		C04AF52924D34ADC0054686E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5UGDG4B2MG;
@@ -406,6 +428,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -414,6 +437,7 @@
 		C04AF52A24D34ADC0054686E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5UGDG4B2MG;
@@ -440,6 +464,7 @@
 		C04AF52C24D34ADC0054686E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5UGDG4B2MG;
 				INFOPLIST_FILE = CREDExpandableViewTests/Info.plist;
@@ -458,6 +483,7 @@
 		C04AF52D24D34ADC0054686E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5UGDG4B2MG;
 				INFOPLIST_FILE = CREDExpandableViewTests/Info.plist;
