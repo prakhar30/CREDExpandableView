@@ -13,6 +13,9 @@
 		C0E9687124D34EA200D26CCB /* CREDExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E9687024D34EA200D26CCB /* CREDExpandableView.swift */; };
 		C0E9687624D34F9A00D26CCB /* CREDErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E9687524D34F9A00D26CCB /* CREDErrors.swift */; };
 		C0E9687824D350A000D26CCB /* CREDConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E9687724D350A000D26CCB /* CREDConfig.swift */; };
+		C0E9687B24D3547B00D26CCB /* CREDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E9687A24D3547B00D26CCB /* CREDButton.swift */; };
+		C0E9687D24D3548900D26CCB /* CREDLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E9687C24D3548900D26CCB /* CREDLabel.swift */; };
+		C0E9687F24D3552A00D26CCB /* CREDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E9687E24D3552A00D26CCB /* CREDView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		C0E9687024D34EA200D26CCB /* CREDExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CREDExpandableView.swift; sourceTree = "<group>"; };
 		C0E9687524D34F9A00D26CCB /* CREDErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CREDErrors.swift; sourceTree = "<group>"; };
 		C0E9687724D350A000D26CCB /* CREDConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CREDConfig.swift; sourceTree = "<group>"; };
+		C0E9687A24D3547B00D26CCB /* CREDButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CREDButton.swift; sourceTree = "<group>"; };
+		C0E9687C24D3548900D26CCB /* CREDLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CREDLabel.swift; sourceTree = "<group>"; };
+		C0E9687E24D3552A00D26CCB /* CREDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CREDView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,7 @@
 		C04AF51624D34ADC0054686E /* CREDExpandableView */ = {
 			isa = PBXGroup;
 			children = (
+				C0E9687924D3546B00D26CCB /* Models */,
 				C0E9687424D34F8C00D26CCB /* Constants */,
 				C04AF51724D34ADC0054686E /* CREDExpandableView.h */,
 				C04AF51824D34ADC0054686E /* Info.plist */,
@@ -126,6 +133,16 @@
 				C0E9687724D350A000D26CCB /* CREDConfig.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		C0E9687924D3546B00D26CCB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C0E9687A24D3547B00D26CCB /* CREDButton.swift */,
+				C0E9687C24D3548900D26CCB /* CREDLabel.swift */,
+				C0E9687E24D3552A00D26CCB /* CREDView.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,7 +278,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0E9687F24D3552A00D26CCB /* CREDView.swift in Sources */,
 				C0E9687824D350A000D26CCB /* CREDConfig.swift in Sources */,
+				C0E9687B24D3547B00D26CCB /* CREDButton.swift in Sources */,
+				C0E9687D24D3548900D26CCB /* CREDLabel.swift in Sources */,
 				C0E9687624D34F9A00D26CCB /* CREDErrors.swift in Sources */,
 				C0E9687124D34EA200D26CCB /* CREDExpandableView.swift in Sources */,
 			);
