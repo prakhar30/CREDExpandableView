@@ -13,6 +13,7 @@ import UIKit
 public class CREDExpandableView: NSObject {
     
     private var numberOfViews: Int
+    public weak var delegate: CREDExpandableDelegate?
     
     /// Initialise the CREDExpandable view with the required number of views
     public init(numberOfViews: Int) throws {
@@ -28,6 +29,7 @@ public class CREDExpandableView: NSObject {
         if numberOfViews >= CREDConfig.kMinimumViews && numberOfViews <= CREDConfig.kMaximumViews {
             CREDStackView.shared.views = views
             CREDStackView.shared.numberOfViews = numberOfViews
+            CREDStackView.shared.delegate = self
         } else {
             throw CREDError.wrongSetup(ErrorConstants.kWrongNumberOfViewsPassed)
         }
@@ -43,7 +45,17 @@ public class CREDExpandableView: NSObject {
         if atIndex < 0 || atIndex > numberOfViews - 1 {
             return nil
         } else {
-            return CREDStackView.shared.userDataViews[atIndex]
+            return CREDStackView.shared.viewContainers[atIndex].view
         }
+    }
+}
+
+extension CREDExpandableView: ExpandableViewDelegate {
+    func expandableView(expanded at: Int, button: UIButton, view: UIView, label: UILabel) {
+        self.delegate?.expandableView(expanded: at, button: button, view: view, label: label)
+    }
+    
+    func expandableVIew(collapsed at: Int, button: UIButton) {
+        self.delegate?.expandableVIew(collapsed: at, button: button)
     }
 }

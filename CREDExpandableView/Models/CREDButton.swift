@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 public struct CREDButton {
-    var title: String
-    var backgroundColor: UIColor = UIColor.clear
+    public var title: String
+    public var backgroundColor: UIColor = UIColor.clear
     
     public init(title: String, backgroundColor: UIColor = UIColor.clear) {
         self.title = title

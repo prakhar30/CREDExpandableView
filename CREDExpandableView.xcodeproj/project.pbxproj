@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C01BF10324D3FF0000B2FBA5 /* CREDStackContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01BF10224D3FF0000B2FBA5 /* CREDStackContainer.swift */; };
+		C01BF10A24D4001300B2FBA5 /* CREDExpandableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01BF10924D4001300B2FBA5 /* CREDExpandableViewProtocol.swift */; };
 		C04AF51E24D34ADC0054686E /* CREDExpandableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C04AF51424D34ADC0054686E /* CREDExpandableView.framework */; };
 		C04AF52324D34ADC0054686E /* CREDExpandableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04AF52224D34ADC0054686E /* CREDExpandableViewTests.swift */; };
 		C04AF52524D34ADC0054686E /* CREDExpandableView.h in Headers */ = {isa = PBXBuildFile; fileRef = C04AF51724D34ADC0054686E /* CREDExpandableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C01BF10224D3FF0000B2FBA5 /* CREDStackContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CREDStackContainer.swift; sourceTree = "<group>"; };
+		C01BF10924D4001300B2FBA5 /* CREDExpandableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CREDExpandableViewProtocol.swift; sourceTree = "<group>"; };
 		C04AF51424D34ADC0054686E /* CREDExpandableView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CREDExpandableView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04AF51724D34ADC0054686E /* CREDExpandableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CREDExpandableView.h; sourceTree = "<group>"; };
 		C04AF51824D34ADC0054686E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,6 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C01BF10624D3FFD500B2FBA5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C01BF10924D4001300B2FBA5 /* CREDExpandableViewProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		C04AF50A24D34ADC0054686E = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +113,7 @@
 		C04AF51624D34ADC0054686E /* CREDExpandableView */ = {
 			isa = PBXGroup;
 			children = (
+				C01BF10624D3FFD500B2FBA5 /* Protocols */,
 				C0E9687924D3546B00D26CCB /* Models */,
 				C0E9687424D34F8C00D26CCB /* Constants */,
 				C04AF51724D34ADC0054686E /* CREDExpandableView.h */,
@@ -144,6 +157,7 @@
 				C0E9687A24D3547B00D26CCB /* CREDButton.swift */,
 				C0E9687C24D3548900D26CCB /* CREDLabel.swift */,
 				C0E9687E24D3552A00D26CCB /* CREDView.swift */,
+				C01BF10224D3FF0000B2FBA5 /* CREDStackContainer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -283,11 +297,13 @@
 			files = (
 				C0E9687F24D3552A00D26CCB /* CREDView.swift in Sources */,
 				C0E9687824D350A000D26CCB /* CREDConfig.swift in Sources */,
+				C01BF10324D3FF0000B2FBA5 /* CREDStackContainer.swift in Sources */,
 				C0E9687B24D3547B00D26CCB /* CREDButton.swift in Sources */,
 				C0E9687D24D3548900D26CCB /* CREDLabel.swift in Sources */,
 				C0E9687624D34F9A00D26CCB /* CREDErrors.swift in Sources */,
 				C0E9688124D3574A00D26CCB /* CREDStackView.swift in Sources */,
 				C0E9687124D34EA200D26CCB /* CREDExpandableView.swift in Sources */,
+				C01BF10A24D4001300B2FBA5 /* CREDExpandableViewProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

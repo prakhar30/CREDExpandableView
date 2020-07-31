@@ -15,7 +15,8 @@ class CREDStackView {
     var views: CREDView?
     var stacks = [UIStackView]()
     var expanded = [Bool]()
-    var userDataViews = [UIView]()
+    var viewContainers = [CREDStackContainer]()
+    weak var delegate: ExpandableViewDelegate?
     
     func displayExpandableView(in view: UIView) {
         let distri: UIStackView.Distribution = .fill
@@ -45,6 +46,12 @@ class CREDStackView {
                 CREDStackView.shared.stacks[i].isHidden = true
             }
         }
+        
+        let firstContainters = CREDStackView.shared.viewContainers[0]
+        CREDStackView.shared.delegate?.expandableView(expanded: 0,
+                                                      button: firstContainters.button,
+                                                      view: firstContainters.view,
+                                                      label: firstContainters.label)
     }
     
     func getSubStackView(distribution: UIStackView.Distribution, alignment: UIStackView.Alignment, index: Int, expanded: Bool) -> UIStackView {
@@ -59,8 +66,9 @@ class CREDStackView {
         stackView.addArrangedSubview(views.2)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        CREDStackView.shared.userDataViews.append(views.1)
-        
+        let containerElements = CREDStackContainer(label: views.2, button: views.0, view: views.1)
+        CREDStackView.shared.viewContainers.append(containerElements)
+                
         if expanded {
             CREDStackView.shared.expanded.append(true)
         } else {
@@ -114,6 +122,11 @@ class CREDStackView {
                         }
                     }
                     CREDStackView.shared.expanded[i] = true
+                    let containerViews = CREDStackView.shared.viewContainers[i]
+                    CREDStackView.shared.delegate?.expandableView(expanded: i,
+                                                                  button: containerViews.button,
+                                                                  view: containerViews.view,
+                                                                  label: containerViews.label)
                 } else {
                     // collapse other
                     for view in stack.arrangedSubviews {
@@ -122,6 +135,8 @@ class CREDStackView {
                         }
                     }
                     CREDStackView.shared.expanded[i] = false
+                    let containerViews = CREDStackView.shared.viewContainers[i]
+                    CREDStackView.shared.delegate?.expandableVIew(collapsed: i, button: containerViews.button)
                 }
             }
             
