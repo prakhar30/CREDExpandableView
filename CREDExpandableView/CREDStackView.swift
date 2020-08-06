@@ -113,40 +113,64 @@ class CREDStackView {
     
     @objc func buttonClicked(_ sender: UIButton) {
         if !CREDStackView.shared.expanded[sender.tag] {
-            for (i, stack) in CREDStackView.shared.stacks.enumerated() {
-                if i == sender.tag {
-                    // expand this
-                    for view in stack.arrangedSubviews {
-                        if !(view is UIButton) {
-                            view.isHidden = false
-                        }
+            var viewCollapsing: (() -> ())?
+
+            // find expanded stack
+            var expandedStackIndex = 0
+            for (i, isExpanded) in CREDStackView.shared.expanded.enumerated() {
+                if isExpanded {
+                    expandedStackIndex = i
+                }
+            }
+            // collapse expanded view
+            viewCollapsing = {
+                for view in CREDStackView.shared.stacks[expandedStackIndex].arrangedSubviews {
+                    if !(view is UIButton) {
+                        view.isHidden = true
                     }
-                    CREDStackView.shared.expanded[i] = true
-                    let containerViews = CREDStackView.shared.viewContainers[i]
-                    CREDStackView.shared.delegate?.expandableView(expanded: i,
-                                                                  button: containerViews.button,
-                                                                  view: containerViews.view,
-                                                                  label: containerViews.label)
-                } else {
-                    // collapse other
-                    for view in stack.arrangedSubviews {
-                        if !(view is UIButton) {
-                            view.isHidden = true
-                        }
+                }
+            }
+            CREDStackView.shared.expanded[expandedStackIndex] = false
+            let containerViews = CREDStackView.shared.viewContainers[expandedStackIndex]
+            
+            // expand clicked stack
+            let stack = CREDStackView.shared.stacks[sender.tag]
+            let viewExpanding = {
+                for view in stack.arrangedSubviews {
+                    if !(view is UIButton) {
+                        view.isHidden = false
                     }
-                    CREDStackView.shared.expanded[i] = false
-                    let containerViews = CREDStackView.shared.viewContainers[i]
-                    CREDStackView.shared.delegate?.expandableVIew(collapsed: i, button: containerViews.button)
+                }
+            }
+            CREDStackView.shared.expanded[sender.tag] = true
+            let expandedContainerViews = CREDStackView.shared.viewContainers[sender.tag]
+            
+            
+            CATransaction.begin()
+            CATransaction.setAnimationDuration(0.4)
+            CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: .easeInEaseOut))
+            CATransaction.setCompletionBlock {
+                CREDStackView.shared.delegate?.expandableVIew(collapsed: expandedStackIndex, button: containerViews.button)
+                CREDStackView.shared.delegate?.expandableView(expanded: sender.tag,
+                                                              button: expandedContainerViews.button,
+                                                              view: expandedContainerViews.view,
+                                                              label: expandedContainerViews.label)
+                
+                for i in (sender.tag+1)..<CREDStackView.shared.stacks.count {
+                    if i == sender.tag + 1 {
+                        CREDStackView.shared.stacks[i].isHidden = false
+                    } else {
+                        CREDStackView.shared.stacks[i].isHidden = true
+                    }
                 }
             }
             
-            for i in (sender.tag+1)..<CREDStackView.shared.stacks.count {
-                if i == sender.tag + 1 {
-                    CREDStackView.shared.stacks[i].isHidden = false
-                } else {
-                    CREDStackView.shared.stacks[i].isHidden = true
-                }
+            UIView.animate(withDuration: 0.4) {
+                viewExpanding()
+                viewCollapsing?()
             }
+            
+            CATransaction.commit()
         }
     }
 
